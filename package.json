@@ -3,5 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "author": "anoriqq <shota.yoshikawa@anoriqq.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "fusuma": "^1.15.1"
+  }
 }
