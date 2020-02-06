@@ -1,0 +1,297 @@
+import { Card, Flex } from '@fusuma/client';
+
+<!-- sectionTitle: Setup -->
+
+# Work
+##### 手を動かす
+
+---
+
+## の前にアンケート
+
+---
+
+<!-- note
+macOSをお使いの方にお手伝いしていただきたいので何名か決める
+-->
+
+## 使っているデバイスのosは?
+
+<br/>
+
+- 1. Windows
+- 2. macOS
+- 3. Linux/Unix
+- 4. その他
+
+---
+
+## GitHubアカウントをつくる
+
+---
+
+<!-- classes: fullscreen -->
+
+<Card
+  left={
+    <img src="https://github.com/anoriqq/anoriqq/blob/images/YORBtdE05oV5Z6DyNw9bDZxCMAe8tj.png?raw=true"/>
+  }
+  right={
+    <h4><a href="https://github.com/join">アカウント作成ページ</a>にアクセスしてフォームを入力する</h4>
+  }
+/>
+
+---
+
+<!-- classes: fullscreen -->
+
+<Card
+  left={
+    <img src="https://github.com/anoriqq/anoriqq/blob/images/oAifceq7YSia8LLH2I515xZvRqTzOs.png?raw=true"/>
+  }
+  right={
+    <h4>IndividualのFreeプランを選択する</h4>
+  }
+/>
+
+---
+
+<!-- classes: fullscreen -->
+
+<Card
+  left={
+    <img src="https://github.com/anoriqq/anoriqq/blob/images/yqHQRqTHsZDhfqCIjC5npCtUhFMU1h.png?raw=true"/>
+  }
+  right={
+    <>
+      <h4>良かったらアンケートに答えてください</h4>
+      <h5>(スキップもできます)</h5>
+      <br/>
+      <h4>入力したアドレス宛に届いたメールのリンクも踏んでおいてください</h4>
+    </>
+  }
+/>
+
+---
+
+## Gitをインストール
+
+---
+
+#### macOS/Windows (macOSは標準ではいってるかも)
+
+- 1. [公式のダウンロードページ](https://git-scm.com/downloads)からインストーラーをインストール
+  - <img width="800px" src="https://github.com/anoriqq/anoriqq/blob/images/25f9QaaRSareZOldrQ8HXCWqxfPtL7.png?raw=true"/>
+- 2. インストーラーを実行 (全てデフォルト設定でok)
+
+<br/>
+
+#### Linux / Unix (おそらく標準で入っている)
+
+Linuxディストロの標準パッケージマネージャ経由 or ソースからビルド ([公式ドキュメント](https://git-scm.com/download/linux))
+
+```shell
+$ sudo apt-get install git # Debian / Ubuntu
+$ sudo pacman -S git # Arch Linux
+$ sudo apk add git # Alpine
+```
+
+---
+
+## Gitがインストールできたか確認する
+
+---
+
+## の前にGitを使う方法を決める
+
+---
+
+## Gitを使う方法はいろいろ
+
+<br/>
+
+- 1. GUIから使う
+- 2. CLIから使う
+
+---
+
+## 1. GUIから使う
+
+- GUI([**G**raphical **u**ser **i**nterface](https://en.wikipedia.org/wiki/Graphical_user_interface))とは
+- <img width="800px" src="https://upload.wikimedia.org/wikipedia/commons/a/a4/GNOME-Shell-3.10.png?"/>
+
+---
+
+## GUIからGitを使うためのツール ([公式ドキュメント](https://git-scm.com/downloads/guis/))
+
+<Flex
+  items={[
+    <div>
+      <img width="600px" src="https://www.sourcetreeapp.com/dam/jcr:f32681c1-355d-4806-b29c-319b0c6ecb06/Sourcetree-blue.svg?"/>
+      <br/><a href="https://www.sourcetreeapp.com">Sourcetree</a>
+    </div>,
+  ]}
+/>
+<Flex
+  items={[
+    <div>
+      <img width="200px" src="https://desktop.github.com/images/desktop-icon.svg?"/>
+      <br/><a href="https://desktop.github.com/">GitHub Desktop</a>
+    </div>,
+    <div>
+      <img width="200px" src="https://www.gitkraken.com/downloads/brand-assets/gitkraken-logo-light-sq.png?"/>
+      <br/><a href="https://www.gitkraken.com/">GitKraken</a>
+    </div>,
+  ]}
+/>
+
+---
+
+## 2. CLIから使う
+
+- CLI([**C**ommand-**l**ine **i**nterface](https://en.wikipedia.org/wiki/Command-line_interface))とは
+- <img width="800px" src="https://upload.wikimedia.org/wikipedia/commons/2/29/Linux_command-line._Bash._GNOME_Terminal._screenshot.png?"/>
+
+---
+
+## Q. どうやって決めればいいの?
+
+---
+
+<!-- note
+一度だけ使えるようになれば良いです｡自分にあったものが見つかって必要なくなれば､すべて忘れても大丈夫です｡
+便利なクライアントがだいたいやってくれるので｡
+-->
+
+## A. Gitが使えるようになれば､自分が使うべき方法が分かります
+
+---
+
+## 人生で一度だけGitを使えるようになろう
+
+---
+
+## 今決めるもの
+
+<br/>
+
+- 1. テキストエディタ
+- 2. ターミナル (とシェル)
+
+---
+
+## 1. テキストエディタ
+##### よくわからない方は選ぶ必要ないです
+##### よくわかっていて､自分で使いたいものがる方も選ぶ必要はないです
+
+<br/>
+
+- Windows --> メモ帳
+- macOS --> テキストエディット
+- Linux --> 標準ではいっているなにか`vi`とか
+
+---
+
+## 今決めたのは[**テキストエディタ**](https://ja.wikipedia.org/wiki/%E3%83%86%E3%82%AD%E3%82%B9%E3%83%88%E3%82%A8%E3%83%87%E3%82%A3%E3%82%BF)と呼ばれるソフト
+
+<br/>
+
+- テキストファイルを編集するために使います
+- 高機能なものは文字に意味のある色付け(シンタックスハイライト)をしてくれたりします
+
+---
+
+## 今決めるもの
+
+<br/>
+
+- 1. ~~テキストエディタ~~
+- 2. ターミナル (とシェル)
+
+---
+
+## 2. ターミナル (とシェル)
+##### よくわからない方は選ぶ必要ないです
+##### よくわかっていて､自分で使いたいものがる方も選ぶ必要はないです
+
+<br/>
+
+- Windows --> MSYS2 (Git Bash)
+- macOS --> ターミナル.app (Catalinaではzshになったらしい)
+- Linux --> 標準で入ってるなにかTerminal (bash)とか
+
+---
+
+## 今決めたのは**ターミナル**と呼ばれる黒い画面のアレ
+#### と､**シェル**と呼ばれるOSと僕らの仲介役のプログラム
+
+<br/>
+
+- 僕らはシェルを操作してOSと対話します
+- シェルは最低限の機能しかないので､それを黒い画面のアレに映し出すことで､<br/>見た目やその他の機能(コピペとか)が使えるようにするためにターミナルを使います｡
+
+---
+
+
+## 今決めたもの
+
+<br/>
+
+- 1. テキストエディタ
+- 2. ターミナル (とシェル)
+
+<br/>
+
+###### いつでも開けるようにしておいてください
+
+---
+
+<!-- note
+今から教えて､その後忘れてもらうのは､CLIでGitを使う方法です｡
+Git以外は何でも構いません｡
+僕が使えるOSはLinuxとWindowsなので､実演するのはその2つです｡
+テキストファイルの編集をするので､そのために､Windowsならメモ帳､Linuxならvimを使います｡
+macのかたはtextEditが標準で使えるはずなので､特に使いたいものがなければそちらを使用してください｡
+-->
+
+## 早速CLIからGitを使ってみよう
+#### Gitのバージョンを確認するコマンド
+
+```shell
+$ git --version
+git version 2.17.1
+```
+
+---
+
+## Gitに自分の情報を登録する
+
+<br/>
+
+- 複数人で開発するときにこの部分を変更したのはだれなのかという情報があったほうが良いからです
+- 一度設定すればあとは､Gitが勝手に変更した人を覚えてくれます
+- もちろんあとから変更もできます
+- 設定はアルファベットを使う
+
+```shell
+# 名前
+# 自分だとわかれば本名でもよく使うアカウント名でもok
+# GitHubのアカウント名がわかりやすい
+$ git config --global user.name 'your name'
+
+# メールアドレス
+# GitHubに登録したもの
+$ git config --global user.email 'your@email.com'
+
+# エディター
+# 僕の個人的なおすすめ(設定しなくてもok)
+$ git config --global core.editor vim
+
+# 設定内容を確認する
+$ git config --global --list
+user.name=your name
+user.email=your@email.com
+core.editor=vim # <-- 設定しなければない
+# もし､↑のような出力でなく､
+# 新しい画面が開いた場合は`q`を押すと､もとの画面に戻ってこれます
+```
