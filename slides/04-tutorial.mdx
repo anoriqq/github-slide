@@ -1,0 +1,471 @@
+<!-- sectionTitle: Work -->
+
+<!-- note
+チュートリアルすすめる
+-->
+
+# Work
+
+---
+
+## の前にアンケート
+
+---
+
+<!-- note
+macOSをお使いの方にお手伝いしていただきたいので何名か決める
+-->
+
+## 使っているデバイスのosは?
+
+<br/>
+
+- 1. Windows
+- 2. macOS
+- 3. Linux/Unix
+- 4. その他
+
+---
+
+## GitHubアカウントをつくる
+
+---
+
+<!-- classes: fullscreen -->
+
+import { Card } from '@fusuma/client';
+
+<Card
+  left={
+    <img src="https://github.com/anoriqq/anoriqq/blob/images/YORBtdE05oV5Z6DyNw9bDZxCMAe8tj.png?raw=true"/>
+  }
+  right={
+    <h4><a href="https://github.com/join">アカウント作成ページ</a>にアクセスしてフォームを入力する</h4>
+  }
+/>
+
+---
+
+<!-- classes: fullscreen -->
+
+<Card
+  left={
+    <img src="https://github.com/anoriqq/anoriqq/blob/images/oAifceq7YSia8LLH2I515xZvRqTzOs.png?raw=true"/>
+  }
+  right={
+    <h4>IndividualのFreeプランを選択する</h4>
+  }
+/>
+
+---
+
+<!-- classes: fullscreen -->
+
+<Card
+  left={
+    <img src="https://github.com/anoriqq/anoriqq/blob/images/yqHQRqTHsZDhfqCIjC5npCtUhFMU1h.png?raw=true"/>
+  }
+  right={
+    <>
+      <h4>良かったらアンケートに答えてください</h4>
+      <h5>(スキップもできます)</h5>
+      <br/>
+      <h4>入力したアドレス宛に届いたメールのリンクも踏んでおいてください</h4>
+    </>
+  }
+/>
+
+---
+
+<!-- note
+リポジトリとは､コードを保存しておく場所
+これから作るのは特にリモートリポジトリと呼ばれるもの
+写真とかをクラウドにあげるように､コードをクラウドにあげる場所をつくるイメージ
+-->
+
+## リポジトリをつくる
+
+---
+
+<!-- classes: fullscreen -->
+
+<img src="https://github.com/anoriqq/anoriqq/blob/images/ITTShkAUKer2EMryNPPT9eo03adNbO.png?raw=true"/>
+
+---
+
+<!-- note
+今回はgit-studyというリポジトリ名にしました
+-->
+
+<!-- classes: fullscreen -->
+
+## Repository nameを入力してCreate repositoryボタンを押す
+
+<img src="https://github.com/anoriqq/anoriqq/blob/images/SNfF3G5lA0kVlqMEO9kDPovPtfUzab.png?raw=true"/>
+
+---
+
+<!-- note
+リポジトリが作成できた
+-->
+
+<!-- classes: fullscreen -->
+
+<img src="https://github.com/anoriqq/anoriqq/blob/images/sgjLUKekHXIR7KfUJypqaTM9fTJdLJ.png?raw=true"/>
+
+---
+
+## Gitをインストール
+
+---
+
+#### macOS/Windows (macOSは標準ではいってるかも)
+
+- 1. [公式のダウンロードページ](https://git-scm.com/downloads)からインストーラーをインストール
+  - <img width="800px" src="https://github.com/anoriqq/anoriqq/blob/images/25f9QaaRSareZOldrQ8HXCWqxfPtL7.png?raw=true"/>
+- 2. インストーラーを実行 (全てデフォルト設定でok)
+
+<br/>
+
+#### Linux / Unix (おそらく標準で入っている)
+
+Linuxディストロの標準パッケージマネージャ経由 or ソースからビルド ([公式ドキュメント](https://git-scm.com/download/linux))
+
+```shell
+$ sudo apt-get install git # Debian / Ubuntu
+$ sudo pacman -S git # Arch Linux
+$ sudo apk add git # Alpine
+```
+
+---
+
+## Gitがインストールできたか確認する
+
+---
+
+## の前にGitを使う方法を決める
+
+---
+
+## Gitを使う方法はいろいろ
+
+<br/>
+
+- 1. GUIから使う
+- 2. CLIから使う
+
+---
+
+## 1. GUIから使う
+
+- GUI([**G**raphical **u**ser **i**nterface](https://en.wikipedia.org/wiki/Graphical_user_interface))とは
+- <img width="800px" src="https://upload.wikimedia.org/wikipedia/commons/a/a4/GNOME-Shell-3.10.png?"/>
+
+---
+
+import { Flex } from '@fusuma/client';
+
+## GUIからGitを使うためのツール ([公式ドキュメント](https://git-scm.com/downloads/guis/))
+
+<Flex
+  items={[
+    <div>
+      <img width="600px" src="https://www.sourcetreeapp.com/dam/jcr:f32681c1-355d-4806-b29c-319b0c6ecb06/Sourcetree-blue.svg?"/>
+      <br/><a href="https://www.sourcetreeapp.com">Sourcetree</a>
+    </div>,
+  ]}
+/>
+<Flex
+  items={[
+    <div>
+      <img width="200px" src="https://desktop.github.com/images/desktop-icon.svg?"/>
+      <br/><a href="https://desktop.github.com/">GitHub Desktop</a>
+    </div>,
+    <div>
+      <img width="200px" src="https://www.gitkraken.com/downloads/brand-assets/gitkraken-logo-light-sq.png?"/>
+      <br/><a href="https://www.gitkraken.com/">GitKraken</a>
+    </div>,
+  ]}
+/>
+
+---
+
+## 2. CLIから使う
+
+- CLI([**C**ommand-**l**ine **i**nterface](https://en.wikipedia.org/wiki/Command-line_interface))とは
+- <img width="800px" src="https://upload.wikimedia.org/wikipedia/commons/2/29/Linux_command-line._Bash._GNOME_Terminal._screenshot.png?"/>
+
+---
+
+## Q. どうやって決めればいいの?
+
+---
+
+<!-- note
+一度だけ使えるようになれば良いです｡自分にあったものが見つかって必要なくなれば､すべて忘れても大丈夫です｡
+便利なクライアントがだいたいやってくれるので｡
+-->
+
+## A. Gitが使えるようになれば､自分が使うべき方法が分かります
+
+---
+
+## 人生で一度だけGitを使えるようになろう
+
+---
+
+## 今決めるもの
+
+<br/>
+
+- 1. テキストエディタ
+- 2. ターミナル (とシェル)
+
+---
+
+## 1. テキストエディタ
+##### よくわからない方は選ぶ必要ないです
+##### よくわかっていて､自分で使いたいものがる方も選ぶ必要はないです
+
+<br/>
+
+- Windows --> メモ帳
+- macOS --> テキストエディット
+- Linux --> 標準ではいっているなにか`vi`とか
+
+---
+
+## 今決めたのは[**テキストエディタ**](https://ja.wikipedia.org/wiki/%E3%83%86%E3%82%AD%E3%82%B9%E3%83%88%E3%82%A8%E3%83%87%E3%82%A3%E3%82%BF)と呼ばれるソフト
+
+<br/>
+
+- テキストファイルを編集するために使います
+- 高機能なものは文字に意味のある色付け(シンタックスハイライト)をしてくれたりします
+
+---
+
+## 今決めるもの
+
+<br/>
+
+- 1. ~~テキストエディタ~~
+- 2. ターミナル (とシェル)
+
+---
+
+## 2. ターミナル (とシェル)
+##### よくわからない方は選ぶ必要ないです
+##### よくわかっていて､自分で使いたいものがる方も選ぶ必要はないです
+
+<br/>
+
+- Windows --> MSYS2 (Git Bash)
+- macOS --> ターミナル.app (Catalinaではzshになったらしい)
+- Linux --> 標準で入ってるなにかTerminal (bash)とか
+
+---
+
+## 今決めたのは**ターミナル**と呼ばれる黒い画面のアレ
+#### と､**シェル**と呼ばれるOSと僕らの仲介役のプログラム
+
+<br/>
+
+- 僕らはシェルを操作してOSと対話します
+- シェルは最低限の機能しかないので､それを黒い画面のアレに映し出すことで､<br/>見た目やその他の機能(コピペとか)が使えるようにするためにターミナルを使います｡
+
+---
+
+
+## 今決めたもの
+
+<br/>
+
+- 1. テキストエディタ
+- 2. ターミナル (とシェル)
+
+<br/>
+
+###### いつでも開けるようにしておいてください
+
+---
+
+<!-- note
+今から教えて､その後忘れてもらうのは､CLIでGitを使う方法です｡
+Git以外は何でも構いません｡
+僕が使えるOSはLinuxとWindowsなので､実演するのはその2つです｡
+テキストファイルの編集をするので､そのために､Windowsならメモ帳､Linuxならvimを使います｡
+macのかたはtextEditが標準で使えるはずなので､特に使いたいものがなければそちらを使用してください｡
+-->
+
+## 早速CLIからGitを使ってみよう
+#### Gitのバージョンを確認するコマンド
+
+```shell
+$ git --version
+git version 2.17.1
+```
+
+---
+
+## Gitに自分の情報を登録する
+
+<br/>
+
+- 複数人で開発するときにこの部分を変更したのはだれなのかという情報があったほうが良いからです
+- 一度設定すればあとは､Gitが勝手に変更した人を覚えてくれます
+- もちろんあとから変更もできます
+- 設定はアルファベットを使う
+
+```shell
+# 名前
+# 自分だとわかれば本名でもよく使うアカウント名でもok
+# GitHubのアカウント名がわかりやすい
+$ git config --global user.name 'your name'
+
+# メールアドレス
+# GitHubに登録したもの
+$ git config --global user.email 'your@email.com'
+```
+
+## 設定内容を確認する
+
+```shell
+$ git config --global --list
+user.name=your name
+user.email=your@email.com
+```
+
+もし､新しい画面が開いた場合は`q`を押すと､もとの画面に戻ってこれます
+
+---
+
+## GitとGithubを接続する
+
+Gitでは､コードを共有するためになんらかの方法で通信する必要がある
+
+<br/>
+
+#### どんな通信方法(プロトコル)があるのか
+
+[Gitの公式ドキュメント](https://git-scm.com/book/ja/v2/Git%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC-%E3%83%97%E3%83%AD%E3%83%88%E3%82%B3%E3%83%AB)によると
+- Local / HTTP / Secure Shell (SSH) / Git
+
+<br/>
+
+[GitHubの公式ドキュメント](https://help.github.com/ja/github/using-git/which-remote-url-should-i-use)によると
+- HTTPS / SSH
+
+---
+
+## GitとGithubを接続する
+
+Gitでは､コードを共有するためになんらかの方法で通信する必要がある
+
+<br/>
+
+#### どんな通信方法(プロトコル)があるのか
+
+[Gitの公式ドキュメント](https://git-scm.com/book/ja/v2/Git%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC-%E3%83%97%E3%83%AD%E3%83%88%E3%82%B3%E3%83%AB)によると
+- Local / HTTP / Secure Shell (SSH) / Git
+
+<br/>
+
+[GitHubの公式ドキュメント](https://help.github.com/ja/github/using-git/which-remote-url-should-i-use)によると
+- HTTPS / SSH
+
+<br/>
+
+## つまり､**HTTP**か**SSH**を使えばOK
+(GitHubの公式ドキュメントにはとくに書いてないっぽいけど､Gitプロトコルも使いますが､意識しなくてok)
+
+---
+
+## Q. HTTPとSSH､どっちを使えばいいの?
+
+---
+
+#### ここで分岐する
+
+---
+
+## A. どちらでも良いですが､今回はSSHを使います｡
+
+- [GitHub公式](https://help.github.com/ja/github/using-git/which-remote-url-should-i-use)はHTTPSを使えといっている
+- が､その理由はどうやら､SSHよりもHTTPSのほうが簡単でサポートが少なくなるからっぽい ([ソース](https://stackoverflow.com/questions/11041729/why-does-github-recommend-https-over-ssh))
+- 今回はサポートするのは僕だし､エンジニアならどうせSSH使うので､今のうちに触っておこう
+
+---
+
+## 通信内容が外部に漏れた場合､いろいろやばい (語彙力)
+
+---
+
+<!-- note
+ここが､GitHubがサポート面倒臭がっている部分
+-->
+
+ので､**通信相手がなりすましでない**こと､  
+**通信内容が通信相手にしかわからない**こと  
+**通信したことがバックレられない**こと  
+が保証できるように工夫します  
+
+---
+
+<!-- note
+興味ある人はなんかやってるんやなってことさえ知っていれば
+勝手に調べるし､直接Gitに関係ないからとばしてもよい
+というか､正しい情報を伝える難易度が高すぎて､正確な解説はインターネット上に
+出回っていない｡(英語でも同様)
+下手に解説しないようが良いかも
+-->
+
+## SSH (Secure Shell) とは
+
+---
+
+<!-- note
+頭悪そうな一言で草
+-->
+
+## SSHとはハイブリッド暗号通信プロトコル
+
+<br/>
+
+- 共通鍵暗号で使用するセッション鍵の生成: 鍵交換アルゴリズム
+- 通信の暗号化: 共通鍵暗号
+- ホスト認証やユーザ認証: 公開鍵暗号 / パスワード認証 / ワンタイムパスワードなど
+
+<br/>
+
+##### [RFC4250](https://tools.ietf.org/html/rfc4250)や[RFC4251](https://tools.ietf.org/html/rfc4251)などとして制定されている
+
+---
+
+#### この辺で一応詳しく解説したい
+
+---
+
+## SSHで使う暗号鍵ペア (公開鍵と秘密鍵) をつくる
+
+```shell
+# 鍵をつくるコマンド
+$ ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa -C 'your@email.com'  # GitHubに登録したメールアドレス
+Enter passphrase (empty for no passphrase):                       # <-- パスフレーズを入力(任意)
+Enter same passphrase again:                                      # <-- パスフレーズを確認(任意)
+Your identification has been saved in id_rsa.
+Your public key has been saved in id_rsa.pub.
+
+# 鍵を置いた場所の内容を確認する
+$ ls ~/.ssh
+id_rsa  id_rsa.pub # <-- この2つのファイルがあればok
+```
+
+---
+
+## 自分の公開鍵をGitHubに教える
+
+```shell
+$ cat ~/.ssh/id_rsa.pub
+```
+
+githubのアカウント名教えていただければコラボレーターに追加します!
