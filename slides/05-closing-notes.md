@@ -5,3 +5,7 @@
 -->
 
 # Closing Notes
+
+---
+
+## 毎日Gitを使おう

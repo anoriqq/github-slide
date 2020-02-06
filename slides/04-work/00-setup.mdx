@@ -1,10 +1,9 @@
-<!-- sectionTitle: Work -->
+import { Card, Flex } from '@fusuma/client';
 
-<!-- note
-チュートリアルすすめる
--->
+<!-- sectionTitle: Setup -->
 
 # Work
+##### 手を動かす
 
 ---
 
@@ -32,8 +31,6 @@ macOSをお使いの方にお手伝いしていただきたいので何名か決
 ---
 
 <!-- classes: fullscreen -->
-
-import { Card } from '@fusuma/client';
 
 <Card
   left={
@@ -74,44 +71,6 @@ import { Card } from '@fusuma/client';
     </>
   }
 />
-
----
-
-<!-- note
-リポジトリとは､コードを保存しておく場所
-これから作るのは特にリモートリポジトリと呼ばれるもの
-写真とかをクラウドにあげるように､コードをクラウドにあげる場所をつくるイメージ
--->
-
-## リポジトリをつくる
-
----
-
-<!-- classes: fullscreen -->
-
-<img src="https://github.com/anoriqq/anoriqq/blob/images/ITTShkAUKer2EMryNPPT9eo03adNbO.png?raw=true"/>
-
----
-
-<!-- note
-今回はgit-studyというリポジトリ名にしました
--->
-
-<!-- classes: fullscreen -->
-
-## Repository nameを入力してCreate repositoryボタンを押す
-
-<img src="https://github.com/anoriqq/anoriqq/blob/images/SNfF3G5lA0kVlqMEO9kDPovPtfUzab.png?raw=true"/>
-
----
-
-<!-- note
-リポジトリが作成できた
--->
-
-<!-- classes: fullscreen -->
-
-<img src="https://github.com/anoriqq/anoriqq/blob/images/sgjLUKekHXIR7KfUJypqaTM9fTJdLJ.png?raw=true"/>
 
 ---
 
@@ -162,8 +121,6 @@ $ sudo apk add git # Alpine
 - <img width="800px" src="https://upload.wikimedia.org/wikipedia/commons/a/a4/GNOME-Shell-3.10.png?"/>
 
 ---
-
-import { Flex } from '@fusuma/client';
 
 ## GUIからGitを使うためのツール ([公式ドキュメント](https://git-scm.com/downloads/guis/))
 
@@ -325,147 +282,16 @@ $ git config --global user.name 'your name'
 # メールアドレス
 # GitHubに登録したもの
 $ git config --global user.email 'your@email.com'
-```
 
-## 設定内容を確認する
+# エディター
+# 僕の個人的なおすすめ(設定しなくてもok)
+$ git config --global core.editor vim
 
-```shell
+# 設定内容を確認する
 $ git config --global --list
 user.name=your name
 user.email=your@email.com
+core.editor=vim # <-- 設定しなければない
+# もし､↑のような出力でなく､
+# 新しい画面が開いた場合は`q`を押すと､もとの画面に戻ってこれます
 ```
-
-もし､新しい画面が開いた場合は`q`を押すと､もとの画面に戻ってこれます
-
----
-
-## GitとGithubを接続する
-
-Gitでは､コードを共有するためになんらかの方法で通信する必要がある
-
-<br/>
-
-#### どんな通信方法(プロトコル)があるのか
-
-[Gitの公式ドキュメント](https://git-scm.com/book/ja/v2/Git%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC-%E3%83%97%E3%83%AD%E3%83%88%E3%82%B3%E3%83%AB)によると
-- Local / HTTP / Secure Shell (SSH) / Git
-
-<br/>
-
-[GitHubの公式ドキュメント](https://help.github.com/ja/github/using-git/which-remote-url-should-i-use)によると
-- HTTPS / SSH
-
----
-
-## GitとGithubを接続する
-
-Gitでは､コードを共有するためになんらかの方法で通信する必要がある
-
-<br/>
-
-#### どんな通信方法(プロトコル)があるのか
-
-[Gitの公式ドキュメント](https://git-scm.com/book/ja/v2/Git%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC-%E3%83%97%E3%83%AD%E3%83%88%E3%82%B3%E3%83%AB)によると
-- Local / HTTP / Secure Shell (SSH) / Git
-
-<br/>
-
-[GitHubの公式ドキュメント](https://help.github.com/ja/github/using-git/which-remote-url-should-i-use)によると
-- HTTPS / SSH
-
-<br/>
-
-## つまり､**HTTP**か**SSH**を使えばOK
-(GitHubの公式ドキュメントにはとくに書いてないっぽいけど､Gitプロトコルも使いますが､意識しなくてok)
-
----
-
-## Q. HTTPとSSH､どっちを使えばいいの?
-
----
-
-#### ここで分岐する
-
----
-
-## A. どちらでも良いですが､今回はSSHを使います｡
-
-- [GitHub公式](https://help.github.com/ja/github/using-git/which-remote-url-should-i-use)はHTTPSを使えといっている
-- が､その理由はどうやら､SSHよりもHTTPSのほうが簡単でサポートが少なくなるからっぽい ([ソース](https://stackoverflow.com/questions/11041729/why-does-github-recommend-https-over-ssh))
-- 今回はサポートするのは僕だし､エンジニアならどうせSSH使うので､今のうちに触っておこう
-
----
-
-## 通信内容が外部に漏れた場合､いろいろやばい (語彙力)
-
----
-
-<!-- note
-ここが､GitHubがサポート面倒臭がっている部分
--->
-
-ので､**通信相手がなりすましでない**こと､  
-**通信内容が通信相手にしかわからない**こと  
-**通信したことがバックレられない**こと  
-が保証できるように工夫します  
-
----
-
-<!-- note
-興味ある人はなんかやってるんやなってことさえ知っていれば
-勝手に調べるし､直接Gitに関係ないからとばしてもよい
-というか､正しい情報を伝える難易度が高すぎて､正確な解説はインターネット上に
-出回っていない｡(英語でも同様)
-下手に解説しないようが良いかも
--->
-
-## SSH (Secure Shell) とは
-
----
-
-<!-- note
-頭悪そうな一言で草
--->
-
-## SSHとはハイブリッド暗号通信プロトコル
-
-<br/>
-
-- 共通鍵暗号で使用するセッション鍵の生成: 鍵交換アルゴリズム
-- 通信の暗号化: 共通鍵暗号
-- ホスト認証やユーザ認証: 公開鍵暗号 / パスワード認証 / ワンタイムパスワードなど
-
-<br/>
-
-##### [RFC4250](https://tools.ietf.org/html/rfc4250)や[RFC4251](https://tools.ietf.org/html/rfc4251)などとして制定されている
-
----
-
-#### この辺で一応詳しく解説したい
-
----
-
-## SSHで使う暗号鍵ペア (公開鍵と秘密鍵) をつくる
-
-```shell
-# 鍵をつくるコマンド
-$ ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa -C 'your@email.com'  # GitHubに登録したメールアドレス
-Enter passphrase (empty for no passphrase):                       # <-- パスフレーズを入力(任意)
-Enter same passphrase again:                                      # <-- パスフレーズを確認(任意)
-Your identification has been saved in id_rsa.
-Your public key has been saved in id_rsa.pub.
-
-# 鍵を置いた場所の内容を確認する
-$ ls ~/.ssh
-id_rsa  id_rsa.pub # <-- この2つのファイルがあればok
-```
-
----
-
-## 自分の公開鍵をGitHubに教える
-
-```shell
-$ cat ~/.ssh/id_rsa.pub
-```
-
-githubのアカウント名教えていただければコラボレーターに追加します!

@@ -1,0 +1,727 @@
+import { Card, Code, Img } from '@fusuma/client';
+
+<!-- sectionTitle: Tutorial -->
+
+<!-- note
+initと違い､cloneには元になったリポジトリのログが残る場合がある
+-->
+
+## リポジトリを作成する
+
+リポジトリを作成する方法
+
+<br/>
+
+- 1. `init`: 新たに始める
+- 2. `clone`: 既存のリポジトリを複製して始める
+
+---
+
+## リポジトリを作成する
+
+リポジトリを作成する方法
+
+<br/>
+
+- 1. `init`: 新たに始める
+- 2. ~~`clone`: 既存のリポジトリを複製して始める~~
+
+<br/>
+
+今回は新しくリポジトリをつくってまっさらな状態から始める
+
+---
+
+## リポジトリを作成する
+
+今回はホームディレクトリに`src`というディレクトリを作って､そこで作業します
+
+```shell
+# リポジトリを置くためのディレクトリを作成して移動
+$ mkdir ~/src && cd ~/src
+
+# リポジトリを作成して移動
+$ git init git-study # git-study という名前のリポジトリ
+Initialized empty Git repository in /home/ユーザー名/src/git-study/.git/
+$ cd ./git-study
+```
+
+---
+
+## 作成したリポジトリの状態を確認する
+
+```shell
+# ディレクトの内容を表示するコマンド
+$ ls -a
+.git # <-- `.git`というディレクトリが新たに作成された
+```
+
+---
+
+## 作成したリポジトリの状態を確認する
+
+```shell
+# ディレクトの内容を表示するコマンド
+$ ls -a
+.git # <-- `.git`というディレクトリが新たに作成された
+```
+
+<br/>
+
+#### つまり､`.git`ディレクトリがGitの正体
+
+<br/>
+
+`.git`ディレクトリを削除すれば､リポジトリの情報は消える  
+バージョンの情報ももちろん`.git`に入っている
+
+---
+
+## 作成したリポジトリの状態を確認する
+
+```shell
+# gitの状態を表示するコマンド
+$ git status
+On branch master
+
+No commits yet
+
+nothing to commit (create/copy files and use "git add" to track)
+```
+
+---
+
+## 作成したリポジトリの状態を確認する
+
+```shell
+# gitの状態を表示するコマンド
+$ git status
+On branch master      # <-- On branch master ってなに?
+
+No commits yet        # <-- No commits yet ってなに?
+
+nothing to commit (create/copy files and use "git add" to track)
+#           ↑ だから commit ってなに?                         ↑ track って??
+```
+
+---
+
+## Gitを使うにはどうやら
+## 知らない単語を覚える必要があるらしい
+
+<br/>
+
+- branch
+- master
+- commit
+- track etc...
+
+---
+
+## commit とは
+
+<br/>
+
+`git status`を実行したときに  
+2箇所に単語があったらから､なんか重要そう (小並)
+
+---
+
+## commit とは
+
+<img src="https://github.com/anoriqq/anoriqq/blob/images/2020-02-06T15-41-53_UlO4lDkL7QWmOSehOtvwRtBk.jpg?raw=true"/>
+
+---
+
+## commit とは
+
+<img width="800px" src="https://github.com/anoriqq/anoriqq/blob/images/2020-02-06T15-56-09_27UnLe5xeVM94fPRq12U1VBf.png?raw=true"/>
+
+---
+
+<Card
+  left={
+    <img src="https://github.com/anoriqq/anoriqq/blob/images/2020-02-06T15-56-09_27UnLe5xeVM94fPRq12U1VBf.png?raw=true"/>
+  }
+  right={
+    <div>
+      <h2>Commitが持てる情報</h2>
+      <ul>
+        <li>commit自身の名前</li>
+        <li>コミットされたときのリポジトリの状態</li>
+        <li>親の名前｡ いない場合もある</li>
+        <li>コードを書いた人の名前とタイムスタンプ</li>
+        <li>コミットした人の名前とタイムスタンプ</li>
+        <li>コミットメッセージ</li>
+      </ul>
+    </div>
+  }
+/>
+
+---
+
+## Commitをつくる方法
+
+#### 用意するもの
+
+<br/>
+
+- commit自身の名前
+- コミットされたときのリポジトリの状態
+- 親の名前｡ いない場合もある
+- コードを書いた人の名前とタイムスタンプ
+- コミットした人の名前とタイムスタンプ
+- コミットメッセージ
+
+---
+
+## Commitをつくる方法
+
+#### 用意するもの
+
+<br/>
+
+- ~~commit自身の名前~~
+- コミットされたときのリポジトリの状態
+- ~~親の名前｡ いない場合もある~~
+- ~~コードを書いた人の名前とタイムスタンプ~~
+- ~~コミットした人の名前とタイムスタンプ~~
+- コミットメッセージ
+
+---
+
+## 新しい状態を作るために
+## リポジトリにデータを入れる
+
+---
+
+## リポジトリにデータを入れる
+
+```shell
+# README.mdというファイルを新規作成
+$ touch README.md
+```
+
+---
+
+## リポジトリの状態を確認する
+
+```shell
+$ git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        README.md
+
+nothing added to commit but untracked files present (use "git add" to track)
+```
+
+---
+
+<Card
+  left={
+    <>
+      <h2>ファイルを作る前</h2>
+      <Code language="shell">{`\
+$ git status
+On branch master
+\n
+No commits yet
+\n
+nothing to commit (create/copy files and use "git add" to track)\
+  `}</Code>
+    </>
+  }
+  right={
+    <>
+      <h2>ファイルを編集したあと</h2>
+      <Code language="shell">{`\
+$ git status
+On branch master
+\n
+No commits yet
+\n
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+\n
+        README.md
+\n
+nothing added to commit but untracked files present (use "git add" to track)\
+  `}</Code>
+    </>
+  }
+/>
+
+---
+
+## リポジトリの状態を確認する
+
+```shell
+$ git status
+On branch master # <-- ここは変わってない
+
+No commits yet # <-- ここも変わってない
+
+Untracked files: # <-- なんか増えた
+  (use "git add <file>..." to include in what will be committed)
+#         ↑ "git add <file>..."でコミットされる内容に含めろ
+
+        README.md # README.mdはUntracked filesファイルらしい
+
+nothing added to commit but untracked files present (use "git add" to track)
+#                                    "git add" で trackできるらしい ↑
+```
+
+---
+
+## Gitを使うにはどうやら
+## 知らない単語を覚える必要があるらしい
+
+<br/>
+
+- branch
+- master
+- ~~commit~~
+- **track** <--
+
+<br/>
+
+##### Untrackedとかtrackとか書いてあったから次はtrackが重要そう (小並)
+
+---
+
+## track とは
+
+<img src="https://github.com/anoriqq/anoriqq/blob/images/2020-02-06T17-54-37_HnMCamkUgSDi3mhcjdiy3bMW.jpg?raw=true"/>
+
+---
+
+<!-- note
+Untracked filesはいくら変更しても､どこが変わったのかを覚えててくれない
+-->
+
+## track とは
+
+- ファイルを追跡すること
+- 追跡対象のファイルは変更されたこと記録できる
+- 追跡できないファイルを`Untracked files`という
+  - README.mdも今は`Untracked files`なので､追跡できないらしい
+
+---
+
+## README.mdをtrackしてもらう
+
+```shell
+$ git add README.md
+```
+
+---
+
+## リポジトリの状態を確認する
+
+```shell
+$ git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+
+        new file:   README.md
+
+```
+
+---
+
+<Card
+  left={
+    <>
+      <h2>`git add README.md`実行前</h2>
+      <Code language="shell">{`\
+$ git status
+On branch master
+\n
+No commits yet
+\n
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+\n
+        README.md
+\n
+nothing added to commit but untracked files present (use "git add" to track)\
+  `}</Code>
+    </>
+  }
+  right={
+    <>
+      <h2>`git add README.md`実行後</h2>
+      <Code language="shell">{`\
+$ git status
+On branch master
+\n
+No commits yet
+\n
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+\n
+        new file:   README.md
+\n
+  `}</Code>
+    </>
+  }
+/>
+
+---
+
+## リポジトリの状態を確認する
+
+```shell
+$ git status
+On branch master # <-- ここは変わってない
+
+No commits yet # <-- ここも変わってない
+
+Changes to be committed: # <-- なんか変わった
+  (use "git rm --cached <file>..." to unstage)
+
+        new file:   README.md # README.mdがコミットされるファイルになったらしい
+
+```
+
+---
+
+## README.mdがコミットされるファイルになったらしい
+
+---
+
+## つまり
+
+---
+
+<!-- classes: fullscreen -->
+
+<Img src="https://github.com/anoriqq/anoriqq/blob/images/2020-02-06T15-56-09_27UnLe5xeVM94fPRq12U1VBf.png?raw=true">
+  <Code language="md">{`\
+## Commitをつくる方法
+\n
+#### 用意するもの
+\n
+- commit自身の名前
+- コミットされたときのリポジトリの状態
+- 親の名前｡ いない場合もある
+- コードを書いた人の名前とタイムスタンプ
+- コミットした人の名前とタイムスタンプ
+- コミットメッセージ
+  `}</Code>
+</Img>
+
+---
+
+## Commitをつくる
+
+#### Commitをつくることをコミットすると言う
+
+コミットメッセージはコミットするときに指定する
+
+```shell
+#     コミットメッセージ ↓
+$ git commit -m 'Create README.md'
+[master (root-commit) 656c859] create README.md
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 README.md
+```
+
+---
+
+## 作成したCommitを確認する
+
+```shell
+$ git log | cat
+commit 656c8598dc4f6af14ec50b8b095add3bfe35c560
+Author: anoriqq <shota.yoshikawa@anoriqq.com>
+Date:   Thu Feb 6 18:58:33 2020 +0900
+
+    create README.md
+```
+
+---
+
+## 作成したCommitを確認する
+
+```shell
+$ git log | cat
+commit 656c8598dc4f6af14ec50b8b095add3bfe35c560 # <-- commitの名前 hashと呼ばれる
+Author: anoriqq <shota.yoshikawa@anoriqq.com>   # <-- コードを書いた人
+Date:   Thu Feb 6 18:58:33 2020 +0900           # <-- コードを書いた時刻
+
+    create README.md                            # <-- コミットメッセージ
+```
+
+<img src="https://github.com/anoriqq/anoriqq/blob/images/2020-02-06T19-22-02_hBTkgrSVcD9bV5rrdbAobcDk.jpeg?raw=true"/>
+
+---
+
+## リポジトリの状態を確認する
+
+```shell
+$ git status
+On branch master
+nothing to commit, working tree clean
+```
+
+---
+
+## リポジトリの状態を確認する
+
+```shell
+$ git status
+On branch master
+nothing to commit, working tree clean # <-- working treeってなに?
+# ↑ コミットするファイルはないらしい
+```
+
+---
+
+## Gitを使うにはどうやら
+## 知らない単語を覚える必要があるらしい
+
+<br/>
+
+- branch
+- master
+- ~~commit~~
+- ~~track~~
+- working tree <-- new!
+
+---
+
+## working treeとは
+
+- commitの仲間
+- ただし､リポジトリに1つしか存在できない
+- commitと違い､エディターなどを使って内容を編集できる
+- すべてのコミットの仲間の中で､最も新しい
+
+---
+
+## `working tree clean`の意味
+
+<br/>
+
+最新の状態がクリーンで､なにもcommitをつくる材料がない  
+つまり､`working tree` == `最新のcommit`  
+`working tree`に変更を加えると､`最新のcommit`との差分ができるので､  
+新たなcommitが作れるようになる
+
+---
+
+<!-- note
+branchとかは今まで特に変化がないのでスルー
+-->
+
+## Gitを使うにはどうやら
+## 知らない単語を覚える必要があるらしい
+
+<br/>
+
+- branch
+- master
+- ~~commit~~
+- ~~track~~
+- ~~working tree~~
+
+---
+
+## README.mdの内容を編集する
+
+```shell
+# 自分の決めたテキストエディタでREADME.mdを開く
+$ notepad README.md          # windows メモ帳でファイルを開く
+$ open -a TextEdit README.md # macOS テキストエディットでファイルを開く
+$ vi README.md               # Linux viでファイルを開く
+```
+
+---
+
+## README.mdファイルに中身を追加する
+
+テキストエディターでファイルの中身が下記のような内容になるように編集する  
+メモ帳とテキストエディットは`Ctrl+s`でファイルの変更を保存できる  
+viは`Z, Z`  
+
+```md:README.md
+# Hello Git!
+
+```
+
+確認するには以下のコマンドが使える
+
+```shell
+# ファイルの内容を表示する
+$ cat README.md
+# Hello Git!
+
+```
+
+---
+
+## リポジトリの状態を確認する
+
+```shell
+$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        modified:   README.md
+
+no changes added to commit (use "git add" and/or "git commit -a")
+```
+
+---
+
+## リポジトリの状態を確認する
+
+```shell
+$ git status
+On branch master # <-- 変わってない
+Changes not staged for commit: # <-- stagedってなに?
+  (use "git add <file>..." to update what will be committed)
+#        ↑ "git add"にはtrackする以外の機能があるようだ
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        modified:   README.md # <-- trackしたのでmodifiedになっている
+
+no changes added to commit (use "git add" and/or "git commit -a")
+# ↑ コミットする変更はないらしい
+```
+
+---
+
+## Gitを使うにはどうやら
+## 知らない単語を覚える必要があるらしい
+
+<br/>
+
+- branch
+- master
+- ~~commit~~
+- ~~track~~
+- ~~working tree~~
+- stage <-- new!
+
+---
+
+## stage とは
+
+<img src="https://github.com/anoriqq/anoriqq/blob/images/2020-02-06T19-42-08_hhzq52oePI06FbVXAONYZgTF.jpg?raw=true"/>
+
+---
+
+<!-- note
+英語の意味は舞台とかそういう
+working treeのところで､
+`working tree`に変更を加えると､`最新のcommit`との差分ができるので､  
+新たなcommitが作れるようになるって説明したけど､
+-->
+
+## stage とは
+
+- commitの仲間
+- ただし､`working tree`と同様､リポジトリに1つしか存在できない
+- ちょうど､`working tree`と`最新のcommit`の中間
+- `working tree`と`最新のcommit`の差分に新しく作りたいcommitに必要なものと､  
+  不要なものがでてくる場合がある｡  
+  そのときにcommitに必要なものだけをstageにコピーしてからcommitを作る｡
+- stageにコピーされた差分がcommitには必要
+- つまり､何度か登場した"コミットされる内容"とはstageのこと
+
+---
+
+## もう一度リポジトリの状態を確認する
+
+```shell
+$ git status
+On branch master # <-- 変わってない
+Changes not staged for commit: # <-- stageには変更はないよ
+  (use "git add <file>..." to update what will be committed)
+#        ↑ "git add"には変更をstageにコピーする機能がある
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        modified:   README.md
+
+no changes added to commit (use "git add" and/or "git commit -a")
+# ↑ stageに変更が入っていない
+```
+
+---
+
+## README.mdに加えた変更をstageにコピーする
+
+```shell
+$ git add README.md
+```
+
+---
+
+## リポジトリの状態を確認する
+
+```shell
+$ git status
+On branch master
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        modified:   README.md # <-- この変更がstageにコピーされて､
+                              #     いつでもcommitがつくれるようになった
+
+```
+
+---
+
+## コミットする
+
+```shell
+$ git commit -m 'add title'
+[master e3fbffd] add title
+ 1 file changed, 2 insertions(+)
+```
+
+---
+
+## 作成したCommitを確認する
+
+```shell
+$ git log | cat
+commit e3fbffd4689cdf3e908bade32bf0736dbfb59dc1 # <-- 先程のコミット
+Author: anoriqq <shota.yoshikawa@anoriqq.com>
+Date:   Thu Feb 6 21:04:08 2020 +0900
+
+    add title
+
+commit 656c8598dc4f6af14ec50b8b095add3bfe35c560 # <-- 1度目のコミット
+Author: anoriqq <shota.yoshikawa@anoriqq.com>
+Date:   Thu Feb 6 18:58:33 2020 +0900
+
+    create README.md
+```
+
+<img src="https://github.com/anoriqq/anoriqq/blob/images/2020-02-06T21-19-06_TO1CcG6W9WNfCe8PfXce7zdb.jpeg?raw=true"/>
+
+---
+
+## コミットのまとめ
+
+<br/>
+
+- commitはコミットされたタイミングでの状態を持っている
+- コミットするには最新のcommitと､stageの間に差分が必要
+- コミットは`git commit`コマンドを使う
+- working treeの変更をコミットできる状態にするためにstageにコピーする
+- stageへのコピーは`git add`コマンドを使う
