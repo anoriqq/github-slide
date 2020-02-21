@@ -51,7 +51,7 @@ $ cd ./git-study
 ## 作成したリポジトリの状態を確認する
 
 ```shell
-# ディレクトの内容を表示するコマンド
+# ディレクトのコンテンツを表示するコマンド
 $ ls -a
 .git # <-- `.git`というディレクトリが新たに作成された
 ```
@@ -61,7 +61,7 @@ $ ls -a
 ## 作成したリポジトリの状態を確認する
 
 ```shell
-# ディレクトの内容を表示するコマンド
+# ディレクトのコンテンツを表示するコマンド
 $ ls -a
 .git # <-- `.git`というディレクトリが新たに作成された
 ```
@@ -333,7 +333,7 @@ No commits yet # <-- ここも変わってない
 
 Untracked files: # <-- なんか増えた
   (use "git add <file>..." to include in what will be committed)
-#         ↑ "git add <file>..."でコミットされる内容に含めろ
+#         ↑ "git add <file>..."でコミットされるコンテンツに含めろ
 
         README.md # README.mdはUntracked filesファイルらしい
 
@@ -349,7 +349,7 @@ nothing added to commit but untracked files present (use "git add" to track)
 
 - branch
 - master
-- ~~commit~~
+- ~~commit~~ : スナップショット
 - **track** <--
 
 <br/>
@@ -464,10 +464,26 @@ No commits yet # <-- ここも変わってない
 
 Changes to be committed: # <-- なんか変わった
   (use "git rm --cached <file>..." to unstage)
-
+#                                       ↑ unstageってなに?
         new file:   README.md # README.mdがコミットされるファイルになったらしい
 
 ```
+
+---
+
+<!-- note
+stageが何なのかはリストに追加だけしておいて一旦置いておく
+-->
+
+## Gitを使うために必要そうな知らない単語
+
+<br/>
+
+- branch
+- master
+- ~~commit~~ : スナップショット
+- ~~track~~ : ファイルを追跡すること
+- **stage** <-- new!
 
 ---
 
@@ -511,7 +527,7 @@ Changes to be committed: # <-- なんか変わった
 
 ---
 
-## README.mdの中身を書きたい
+## README.mdのコンテンツを書きたい
 
 <br/>
 
@@ -537,13 +553,13 @@ $ vi ./README.md
 ```
 
 ```md:README.md
-# Hello Git
+# Git study
 ```
 
 ```shell
-# ファイルの中身を表示するコマンド
+# ファイルのコンテンツを表示するコマンド
 $ cat ./README.md
-# Hello Git
+# Git study
 ```
 
 ---
@@ -579,7 +595,7 @@ README.mdを編集したことでなにかが変わったようだ
 <Card
   left={
     <>
-      <h2>`git add README.md`実行前</h2>
+      <h2>README.mdを編集する前</h2>
       <Code language="shell">{`\
 $ git status
 On branch master
@@ -596,7 +612,7 @@ Changes to be committed:
   }
   right={
     <>
-      <h2>`git add README.md`実行後</h2>
+      <h2>README.mdを編集した後</h2>
       <Code language="shell">{`\
 $ git status
 On branch master
@@ -631,14 +647,425 @@ No commits yet # <-- ここも変わってない
 
 Changes to be committed: # <-- ここも変わってない
   (use "git rm --cached <file>..." to unstage)
-
+#                                       ↑ unstageってなに?
         new file:   README.md
-
-Changes not staged for commit: # <-- ここが増えた
+ # ↓ ここが増えた
+Changes not staged for commit: # <-- stagedってなに?
   (use "git add <file>..." to update what will be committed)
   (use "git checkout -- <file>..." to discard changes in working directory)
 
         modified:   README.md
+
+```
+
+---
+
+<!-- note
+stage､stageって､ファイルを編集したことでいったい何が変わったって言うんだ
+-->
+
+## Gitを使うために必要そうな知らない単語
+
+<br/>
+
+- branch
+- master
+- ~~commit~~ : スナップショット
+- ~~track~~ : ファイルを追跡すること
+- **stage** <--
+
+<br/>
+
+そろそろ`stage`がなんなのか知りたくなってきた
+
+---
+
+## stageとは
+
+<img src="https://github.com/anoriqq/anoriqq/blob/images/2020-02-21T15-12-36_pIUoyqMPtjpsSvuzHnWabmio.jpg?raw=true"/>
+
+---
+
+<!-- note
+思い出してもらうと､`git add README.md`を実行したときに､README.mdはコミットされるコンテンツになりましたよって言われてた
+
+あれ､`git add`コマンドってtrackしてもらうためにやったのでは...?
+-->
+
+## stageとは
+
+<br/>
+
+- いままで｢コミットされるコンテンツ｣と言われていたファイルを`staged file`という
+- 逆に｢コミットされるコンテンツに含まれません｣と言われていたファイルを`unstaged file`という
+- `unstaged file`を`staged file`にするためには`git add`コマンドを使う
+
+---
+
+<!-- note
+覚えられるかって不安にならないで
+そのほうが楽だからこうなってるんです
+-->
+
+## `git add`コマンドには複数の意味がある
+
+---
+
+<!-- note
+突然ですがこの画像を見てください
+一体`git add`が何をやっているのかを見ていきましょう
+
+先に言っておくと､いくつもあるバージョン管理システムのなかで､Gitの素晴らしいところの1つは`git add`の仕組みにあります
+-->
+
+<!-- classes: fullscreen -->
+
+<img src="https://github.com/anoriqq/anoriqq/blob/images/2020-02-21T17-08-27_8Hv1gHBjyQEKjzRdbjkgxmll.png?raw=true"/>
+
+---
+
+<!-- classes: fullscreen -->
+
+<img src="https://github.com/anoriqq/anoriqq/blob/images/2020-02-21T17-29-11_9f1RXRqWlDUWVPXlF22hzGwg.png?raw=true"/>
+
+---
+
+<!-- classes: fullscreen -->
+
+<img src="https://github.com/anoriqq/anoriqq/blob/images/2020-02-21T17-54-42_gy4t0R95M0orcCFHWtr8lj2z.png?raw=true"/>
+
+---
+
+<!-- note
+まる描いた部分が`git add`によって行うことができる機能
+
+- UntrackedなファイルをStagedにすること
+- ModifiedなファイルをStagedにすること
+
+UntrackedとModifiedの共通点は直前のスナップショットと相違点があること
+-->
+
+<!-- classes: fullscreen -->
+
+<img src="https://github.com/anoriqq/anoriqq/blob/images/2020-02-21T17-58-28_rpteOZI81AzGKVip7T2Fp0eX.png?raw=true"/>
+
+---
+
+## `git add`は
+## 直前のスナップショットから変更されたファイルをStagedにする
+## コマンド
+
+---
+
+<!-- note
+`git add`コマンドのもやもやが解消したところで､
+stageとはに戻りましょう
+-->
+
+## stageとは
+
+<br/>
+
+- いままで｢コミットされるコンテンツ｣と言われていたファイルを`staged file`という
+- 逆に｢コミットされるコンテンツに含まれません｣と言われていたファイルを`unstaged file`という
+- `unstaged file`を`staged file`にするためには`git add`コマンドを使う
+- この操作をステージングするという
+
+---
+
+## コミットの前にファイルをステージングする必要がある
+
+<br/>
+
+- 1. ファイルを編集する
+- 2. ファイルをステージングする
+- 3. コミットする
+
+---
+
+<!-- note
+そのままコミットしてもよくない?
+-->
+
+## コミットの前にファイルをステージングする必要がある
+
+<br/>
+
+- 1. ファイルを編集する
+- 2. **ファイルをステージングする** <-- これ必要...?
+- 3. コミットする
+
+---
+
+<!-- note
+これがGitが他の多くのバージョン管理システムより優れていると呼ばれている点の1つ
+ステージングできたほうが嬉しいことがある
+-->
+
+## ステージングができると何が嬉しいのか
+
+---
+
+#### 開発をしているとき...
+
+<br/>
+
+機能Aと機能Bの実装を任されました  
+2つの機能を同時に実装しました  
+そしてひとつのCommitにまとめてコミットしました  
+
+---
+
+<!-- note
+大変です
+-->
+
+#### 機能Bのほうにバグが見つかりました
+
+<br/>
+
+そうだ､Gitのちからを使って機能Bがなかった状態に戻そう!
+
+---
+
+#### 機能Bを消そうとすると､機能Aも一緒に消えてしまう!
+
+---
+
+## ステージングがあれば...
+
+<br/>
+
+- 1. 機能Aと機能Bを実装する
+- 2. 機能Aだけステージングして､コミットする
+- 3. 機能Bだけステージングして､コミットする
+- 4. もしも機能AかBのどちらかに問題があっても､片方だけ削除できる
+
+---
+
+## ステージングができると､
+## 使いやすいCommitを作ることができるので嬉しい!
+
+---
+
+## リポジトリの状態を確認する
+
+```shell
+$ git status
+On branch master # <-- ここは変わってない
+
+No commits yet # <-- ここも変わってない
+
+Changes to be committed: # <-- ここも変わってない
+  (use "git rm --cached <file>..." to unstage)
+#                                       ↑ unstageってなに?
+        new file:   README.md
+ # ↓ ここが増えた
+Changes not staged for commit: # <-- stagedってなに?
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        modified:   README.md
+
+```
+
+---
+
+## リポジトリの状態を確認する
+
+```shell
+$ git status
+On branch master # <-- ここは変わってない
+
+No commits yet # <-- ここも変わってない
+
+Changes to be committed: # <-- ここも変わってない
+  (use "git rm --cached <file>..." to unstage)
+
+        new file:   README.md # <--
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        modified:   README.md # <-- 同じファイルなのにstagedとunstagedの両方の状態がある
+
+```
+
+---
+
+<!-- classes: fullscreen -->
+
+<img src="https://github.com/anoriqq/anoriqq/blob/images/2020-02-21T18-54-39_PU5yrwBGRSEp9yABugNYSMOj.png?raw=true"/>
+
+---
+
+<!-- classes: fullscreen -->
+
+<img src="https://github.com/anoriqq/anoriqq/blob/images/2020-02-21T18-54-47_EeJ5Tk02vPf3EXqRDS2QB37R.png?raw=true"/>
+
+---
+
+<!-- note
+スペルミスってる許して
+-->
+
+<!-- classes: fullscreen -->
+
+<img src="https://github.com/anoriqq/anoriqq/blob/images/2020-02-21T18-54-53_FokqgPESN1d5oyceQo0ir8uz.png?raw=true"/>
+
+---
+
+<!-- note
+UntrackedとModifiedの共通点は直前のスナップショットと相違点があることと言ったけど
+-->
+
+## modifiedとは
+
+- 直前のスナップショットと相違していること
+
+---
+
+## 直前のスナップショットって､直前のコミットのことじゃないの?
+
+---
+
+<!-- note
+つまりこういうことですね
+-->
+
+<!-- classes: fullscreen -->
+
+<img src="https://github.com/anoriqq/anoriqq/blob/images/2020-02-21T10-43-39_xkEFzIxmVOAqJJka0AyL7E9C.jpeg?raw=true"/>
+
+---
+
+<!-- classes: fullscreen -->
+
+<img src="https://github.com/anoriqq/anoriqq/blob/images/2020-02-21T19-07-12_SfdB07GF9jWZX5G7wEVIbH1L.png?raw=true"/>
+
+---
+
+<!-- classes: fullscreen -->
+
+<img src="https://github.com/anoriqq/anoriqq/blob/images/2020-02-21T19-07-21_C5DakgbSkEwW55SwQo9flRVg.png?raw=true"/>
+
+---
+
+<!-- note
+IndexというのはStageされたものの呼び方です
+Stagedなファイルが集まったtreeをIndexと呼んでいます
+-->
+
+<!-- classes: fullscreen -->
+
+<img src="https://github.com/anoriqq/anoriqq/blob/images/2020-02-21T19-20-50_m1rzZQLoSQGrXuwzC3eJQLMT.png?raw=true"/>
+
+---
+
+<!-- note
+つまり､ここで､同じファイルに2つの状態があるのは､
+-->
+
+## リポジトリの状態を確認する
+
+```shell
+$ git status
+On branch master # <-- ここは変わってない
+
+No commits yet # <-- ここも変わってない
+
+Changes to be committed: # <-- ここも変わってない
+  (use "git rm --cached <file>..." to unstage)
+
+        new file:   README.md # <--
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        modified:   README.md # <-- 同じファイルなのにstagedとunstagedの両方の状態がある
+
+```
+
+---
+
+<!-- note
+さっきのスペルミスってる画像の通り､
+最初のファイル追加はその直前のスナップショット(つまり何もない状態)から見たら新しいファイルが追加されたように見える
+次のファイルの編集はその直前のスナップショット(つまり空っぽのファイルが追加された状態)から見たらファイルの内容が変更されたように見える
+-->
+
+<!-- classes: fullscreen -->
+
+<img src="https://github.com/anoriqq/anoriqq/blob/images/2020-02-21T18-54-53_FokqgPESN1d5oyceQo0ir8uz.png?raw=true"/>
+
+---
+
+<!-- classes: fullscreen -->
+
+<img src="https://github.com/anoriqq/anoriqq/blob/images/2020-02-21T19-39-33_naLrZEHD2dhoMI3wuEnvgubs.png?raw=true"/>
+
+---
+
+<!-- classes: fullscreen -->
+
+<img src="https://github.com/anoriqq/anoriqq/blob/images/2020-02-21T19-39-44_9tcujndbCGApd4SI6YpXQOEz.png?raw=true"/>
+
+---
+
+<!-- classes: fullscreen -->
+
+<img src="https://github.com/anoriqq/anoriqq/blob/images/2020-02-21T19-39-51_AxDEnBtnx86iN3nFEl6lwE9X.png?raw=true"/>
+
+---
+
+<!-- classes: fullscreen -->
+
+<img src="https://github.com/anoriqq/anoriqq/blob/images/2020-02-21T19-39-59_reury4DYBeRESd2eTNNUXAP1.png?raw=true"/>
+
+---
+
+## `git add`で変更をIndexにコピーしよう
+
+#### Indexと､Working directoryの差分を表示するコマンド
+(`q`で元の画面に戻れます)
+
+```shell
+$ git diff
+diff --git a/README.md b/README.md
+index 8b13789..a3e7660 100644
+--- a/README.md
++++ b/README.md
+@@ -1 +1,2 @@
+
++# Git study
+(END)
+```
+
+#### 変更をIndexにコピーするコマンド
+
+```shell
+$ git add README.md
+```
+
+---
+
+<!-- note
+最初に初めて`git add`したときと全く同じ出力になりました｡
+-->
+
+## リポジトリの状態を確認する
+
+```shell
+$ git status
+n branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   README.md
 
 ```
 
@@ -736,7 +1163,7 @@ Commitになる前のやつ
       <ul>
         <li>commitの仲間</li>
         <li>ただし､リポジトリに1つしか存在できない</li>
-        <li>commitと違い､エディターなどを使って内容を編集できる</li>
+        <li>commitと違い､エディターなどを使ってコンテンツを編集できる</li>
         <li>すべてのコミットの仲間の中で､最も新しい</li>
       </ul>
     </div>
@@ -773,7 +1200,7 @@ branchとかは今まで特に変化がないのでスルー
 
 ---
 
-## README.mdの内容を編集する
+## README.mdのコンテンツを編集する
 
 ```shell
 # 自分の決めたテキストエディタでREADME.mdを開く
@@ -784,23 +1211,23 @@ $ vi README.md               # Linux viでファイルを開く
 
 ---
 
-## README.mdファイルに中身を追加する
+## README.mdファイルにコンテンツを追加する
 
-テキストエディターでファイルの中身が下記のような内容になるように編集する  
+テキストエディターでファイルのコンテンツが下記のような内容になるように編集する  
 メモ帳とテキストエディットは`Ctrl+s`でファイルの変更を保存できる  
 viは`Z, Z`  
 
 ```md:README.md
-# Hello Git!
+# Git study
 
 ```
 
 確認するには以下のコマンドが使える
 
 ```shell
-# ファイルの内容を表示する
+# ファイルのコンテンツを表示する
 $ cat README.md
-# Hello Git!
+# Git study
 
 ```
 
@@ -852,11 +1279,11 @@ no changes added to commit (use "git add" and/or "git commit -a")
 - ~~working tree~~
 - stage <-- new!
 
----
+<!-- ---
 
 ## stage とは
 
-<img src="https://github.com/anoriqq/anoriqq/blob/images/2020-02-06T19-42-08_hhzq52oePI06FbVXAONYZgTF.jpg?raw=true"/>
+<img src="https://github.com/anoriqq/anoriqq/blob/images/2020-02-06T19-42-08_hhzq52oePI06FbVXAONYZgTF.jpg?raw=true"/> -->
 
 ---
 
@@ -876,7 +1303,7 @@ working treeのところで､
   不要なものがでてくる場合がある｡  
   そのときにcommitに必要なものだけをstageにコピーしてからcommitを作る｡
 - stageにコピーされた差分がcommitには必要
-- つまり､何度か登場した"コミットされる内容"とはstageのこと
+- つまり､何度か登場した"コミットされるコンテンツ"とはstageのこと
 
 ---
 
