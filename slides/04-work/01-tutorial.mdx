@@ -556,6 +556,9 @@ $ vi ./README.md
 # Git study
 ```
 
+メモ帳とテキストエディットは`Ctrl+s`でファイルの変更を保存できる  
+viは`Z, Z`  
+
 ```shell
 # ファイルのコンテンツを表示するコマンド
 $ cat ./README.md
@@ -1040,7 +1043,6 @@ index 8b13789..a3e7660 100644
 @@ -1 +1,2 @@
 
 +# Git study
-(END)
 ```
 
 #### 変更をIndexにコピーするコマンド
@@ -1079,7 +1081,7 @@ Changes to be committed:
 
 ```shell
 #     コミットメッセージ ↓
-$ git commit -m 'Create README.md'
+$ git commit -m 'create README.md'
 [master (root-commit) 656c859] create README.md
  1 file changed, 0 insertions(+), 0 deletions(-)
  create mode 100644 README.md
@@ -1115,6 +1117,12 @@ Date:   Thu Feb 6 18:58:33 2020 +0900           # <-- コードを書いた時�
 
 ---
 
+<!-- note
+コミットするファイルはないらしい
+絶妙なニュアンスの違いはあるけど
+working treeはWorking directoryと同じ意味だと思ってもらってok
+-->
+
 ## リポジトリの状態を確認する
 
 ```shell
@@ -1122,53 +1130,6 @@ $ git status
 On branch master
 nothing to commit, working tree clean
 ```
-
----
-
-## リポジトリの状態を確認する
-
-```shell
-$ git status
-On branch master
-nothing to commit, working tree clean # <-- working treeってなに?
-# ↑ コミットするファイルはないらしい
-```
-
----
-
-## Gitを使うにはどうやら
-## 知らない単語を覚える必要があるらしい
-
-<br/>
-
-- branch
-- master
-- ~~commit~~
-- ~~track~~
-- working tree <-- new!
-
----
-
-<!-- note
-Commitになる前のやつ
--->
-
-<Card
-  left={
-    <img src="https://github.com/anoriqq/anoriqq/blob/images/2020-02-18T19-19-21_Tc1mMK8eqGsijHHIOViXGNAD.png?raw=true"/>
-  }
-  right={
-    <div>
-      <h2>working treeとは</h2>
-      <ul>
-        <li>commitの仲間</li>
-        <li>ただし､リポジトリに1つしか存在できない</li>
-        <li>commitと違い､エディターなどを使ってコンテンツを編集できる</li>
-        <li>すべてのコミットの仲間の中で､最も新しい</li>
-      </ul>
-    </div>
-  }
-/>
 
 ---
 
@@ -1183,238 +1144,293 @@ Commitになる前のやつ
 
 ---
 
-<!-- note
-branchとかは今まで特に変化がないのでスルー
--->
+<!-- classes: fullscreen -->
 
-## Gitを使うにはどうやら
-## 知らない単語を覚える必要があるらしい
+<img src="https://github.com/anoriqq/anoriqq/blob/images/2020-02-21T20-19-45_0srrxWrz44JlRcgo98FROpuG.png?raw=true"/>
+
+---
+
+## Gitを使うために必要そうな知らない単語
 
 <br/>
 
-- branch
-- master
-- ~~commit~~
-- ~~track~~
-- ~~working tree~~
-
----
-
-## README.mdのコンテンツを編集する
-
-```shell
-# 自分の決めたテキストエディタでREADME.mdを開く
-$ notepad README.md          # windows メモ帳でファイルを開く
-$ open -a TextEdit README.md # macOS テキストエディットでファイルを開く
-$ vi README.md               # Linux viでファイルを開く
-```
-
----
-
-## README.mdファイルにコンテンツを追加する
-
-テキストエディターでファイルのコンテンツが下記のような内容になるように編集する  
-メモ帳とテキストエディットは`Ctrl+s`でファイルの変更を保存できる  
-viは`Z, Z`  
-
-```md:README.md
-# Git study
-
-```
-
-確認するには以下のコマンドが使える
-
-```shell
-# ファイルのコンテンツを表示する
-$ cat README.md
-# Git study
-
-```
-
----
-
-## リポジトリの状態を確認する
-
-```shell
-$ git status
-On branch master
-Changes not staged for commit:
-  (use "git add <file>..." to update what will be committed)
-  (use "git checkout -- <file>..." to discard changes in working directory)
-
-        modified:   README.md
-
-no changes added to commit (use "git add" and/or "git commit -a")
-```
-
----
-
-## リポジトリの状態を確認する
-
-```shell
-$ git status
-On branch master # <-- 変わってない
-Changes not staged for commit: # <-- stagedってなに?
-  (use "git add <file>..." to update what will be committed)
-#        ↑ "git add"にはtrackする以外の機能があるようだ
-  (use "git checkout -- <file>..." to discard changes in working directory)
-
-        modified:   README.md # <-- trackしたのでmodifiedになっている
-
-no changes added to commit (use "git add" and/or "git commit -a")
-# ↑ コミットする変更はないらしい
-```
-
----
-
-## Gitを使うにはどうやら
-## 知らない単語を覚える必要があるらしい
-
-<br/>
-
-- branch
-- master
-- ~~commit~~
-- ~~track~~
-- ~~working tree~~
-- stage <-- new!
-
-<!-- ---
-
-## stage とは
-
-<img src="https://github.com/anoriqq/anoriqq/blob/images/2020-02-06T19-42-08_hhzq52oePI06FbVXAONYZgTF.jpg?raw=true"/> -->
+- branch <-- これと
+- master <-- これの話
+- ~~commit~~ : スナップショット
+- ~~track~~ : ファイルを追跡すること
+- ~~stage~~ : コミットするための変更を選択すること
 
 ---
 
 <!-- note
-英語の意味は舞台とかそういう
-working treeのところで､
-`working tree`に変更を加えると､`最新のcommit`との差分ができるので､  
-新たなcommitが作れるようになるって説明したけど､
+なんでそんなことする必要があるのかと思うけど､何かの役に立つんでしょうきっと
 -->
-
-## stage とは
-
-- commitの仲間
-- ただし､`working tree`と同様､リポジトリに1つしか存在できない
-- ちょうど､`working tree`と`最新のcommit`の中間
-- `working tree`と`最新のcommit`の差分に新しく作りたいcommitに必要なものと､  
-  不要なものがでてくる場合がある｡  
-  そのときにcommitに必要なものだけをstageにコピーしてからcommitを作る｡
-- stageにコピーされた差分がcommitには必要
-- つまり､何度か登場した"コミットされるコンテンツ"とはstageのこと
-
----
-
-## もう一度リポジトリの状態を確認する
-
-```shell
-$ git status
-On branch master # <-- 変わってない
-Changes not staged for commit: # <-- stageには変更はないよ
-  (use "git add <file>..." to update what will be committed)
-#        ↑ "git add"には変更をstageにコピーする機能がある
-  (use "git checkout -- <file>..." to discard changes in working directory)
-
-        modified:   README.md
-
-no changes added to commit (use "git add" and/or "git commit -a")
-# ↑ stageに変更が入っていない
-```
-
----
-
-## README.mdに加えた変更をstageにコピーする
-
-```shell
-$ git add README.md
-```
-
----
-
-## リポジトリの状態を確認する
-
-```shell
-$ git status
-On branch master
-Changes to be committed:
-  (use "git reset HEAD <file>..." to unstage)
-
-        modified:   README.md # <-- この変更がstageにコピーされて､
-                              #     いつでもcommitがつくれるようになった
-
-```
-
----
-
-## コミットする
-
-```shell
-$ git commit -m 'add title'
-[master e3fbffd] add title
- 1 file changed, 2 insertions(+)
-```
-
----
-
-## 作成したCommitを確認する
-
-```shell
-$ git log | cat
-commit e3fbffd4689cdf3e908bade32bf0736dbfb59dc1 # <-- 先程のコミット
-Author: anoriqq <shota.yoshikawa@anoriqq.com>
-Date:   Thu Feb 6 21:04:08 2020 +0900
-
-    add title
-
-commit 656c8598dc4f6af14ec50b8b095add3bfe35c560 # <-- 1度目のコミット
-Author: anoriqq <shota.yoshikawa@anoriqq.com>
-Date:   Thu Feb 6 18:58:33 2020 +0900
-
-    create README.md
-```
-
-<img src="https://github.com/anoriqq/anoriqq/blob/images/2020-02-06T21-19-06_TO1CcG6W9WNfCe8PfXce7zdb.jpeg?raw=true"/>
-
----
-
-## コミットのまとめ
-
-<br/>
-
-- commitはコミットされたタイミングでの状態を持っている
-- コミットするには最新のcommitと､stageの間に差分が必要
-- コミットは`git commit`コマンドを使う
-- working treeの変更をコミットできる状態にするためにstageにコピーする
-- stageへのコピーは`git add`コマンドを使う
-
----
-
-## Gitを使うにはどうやら
-## 知らない単語を覚える必要があるらしい
-
-<br/>
-
-- branch <-- これの
-- master <--      話
-- ~~commit~~
-- ~~track~~
-- ~~working tree~~
-- ~~stage~~
-
----
 
 ## branchとは
 
-- commitを入れる名前付きの箱
+- commitの名前を入れる名前付きの箱
+- 例えば`feature`という名前のbranchを作ってここに  
+`commit-A`という名前のCommitを入れておくことができる
 
 ---
 
 ## masterとは
 
 - デフォルトで作成されるbranchの名前
+- ちなみに今は､`master`という名前のbranchに  
+さっき作ったCommitの名前が入っています
 
 ---
 
+<!-- note
+git statusを実行したときに一番はじめに出力される内容
+master branchにいますよという意味
+-->
+
 ## `On branch master`
+
+--> 今は`master`ブランチにいます
+
+---
+
+## 今は`master`ブランチに**います**
+
+<br/>
+
+いる...とは...?
+
+---
+
+<!-- note
+突然ですが､今のこの状況で､次にworking directoryを変更したらどこと比較すると思いますか?
+-->
+
+<!-- classes: fullscreen -->
+
+<img src="https://github.com/anoriqq/anoriqq/blob/images/2020-02-21T20-19-45_0srrxWrz44JlRcgo98FROpuG.png?raw=true"/>
+
+---
+
+<!-- note
+Working directoryでなにかを変更した!
+-->
+
+<!-- classes: fullscreen -->
+
+<img src="https://github.com/anoriqq/anoriqq/blob/images/2020-02-21T20-49-06_A00hSKVPYEefDDUeMEWesvjr.png?raw=true"/>
+
+---
+
+<!-- note
+Commit Aと全く同じIndexと比較する(Commit Aと比較していると言っても良いでしょう)
+じゃあ､更にコミットした場合は?
+-->
+
+<!-- classes: fullscreen -->
+
+<img src="https://github.com/anoriqq/anoriqq/blob/images/2020-02-21T20-49-21_Zya8wEJr0EO4NTTIhfHOHRev.png?raw=true"/>
+
+---
+
+<!-- note
+Commit Bと全く同じIndexと比較する(Commit Bと比較していると言っても良いでしょう)
+じゃあ､更にコミットした場合は?
+-->
+
+<!-- classes: fullscreen -->
+
+<img src="https://github.com/anoriqq/anoriqq/blob/images/2020-02-21T20-49-40_ogu11vlm0MVFdjpin1vbWXB9.png?raw=true"/>
+
+---
+
+## 比較対象がコミットを重ねるごとに変わる!
+
+<br/>
+
+この比較対象は直前のCommitであり､  
+このCommitを現在行っている変更の**親**と呼びます
+
+---
+
+## Gitさんは毎回親を覚えているのがだるいらしい
+
+<br/>
+
+コミットするたびに次の変更の親はこのCommitです!って言ってられない...
+
+---
+
+<!-- note
+新たなソリューション!!!
+-->
+
+## HEADと呼ばれる親を入れる箱を用意した
+
+<br/>
+
+コミットするたびにHEADに新しい親の名前を入れておこう!
+
+---
+
+## HEADに親が入っている状態を**いる**と表現しています
+
+<br/>
+
+例えば､HEADがCommit-Aなら  
+今はCommit-Aに**います**｡と言える｡  
+
+<br/>
+
+次の変更をコミットすると､そのCommitの親はCommit-Aになります  
+そして､次はCommit-Bに**いる**状態に切り替わります
+
+---
+
+<!-- note
+よくぞ気づきました!
+-->
+
+## あれ､今のHEADはCommit-Aじゃなくてmasterブランチだけど...
+
+---
+
+<!-- note
+ブランチが何だったのかを確認すると､
+-->
+
+## branchとは
+
+- commitの名前を入れる名前付きの箱
+- 例えば`feature`という名前のbranchを作ってここに  
+`commit-A`という名前のCommitを入れておくことができる
+
+---
+
+<!-- note
+これが正しい!
+つまり間違ってないですね
+次のコミットではmasterの中身のCommitの名前が自動的に進められます
+-->
+
+## 今のHEADはCommit-Aじゃなくて､
+## Commit-Aを表しているmasterブランチ
+
+---
+
+## わざわざ2重に箱詰めする必要性
+
+<br/>
+
+重要なのは､自動的にコミットを  
+進めてくれる箱に名前がつけられること  
+
+<br/>
+
+(HEADには別の名前を**たくさん**つけられない)
+
+---
+
+## ブランチは無制限に作れる
+
+<br/>
+
+さらに､すべてのブランチに別々のCommitを入れることができて､  
+さらにそれぞれを親としてcommitすると､自動的に進んでくれる｡
+
+---
+
+<!-- classes: fullscreen -->
+
+<img src="https://github.com/anoriqq/anoriqq/blob/images/2020-02-21T21-27-02_FKj48BX2xaHZXNUWjCtJ3Rst.png?raw=true"/>
+
+---
+
+<!-- note
+ここからはただの使い方なので､内容がうっっすくなります｡
+ここまでの内容が理解できていればあとはそれぞれググればなんでも分かります｡
+ので一緒に手を動かさなくてもokです｡
+-->
+
+# 並列開発ができる!!!
+
+---
+
+## 早速新しいブランチを作る
+
+```shell
+# testingという名前の新しくブランチをつくるコマンド
+$ git bransh testing
+
+# ブランチの一覧を表示するコマンド
+$ git branch -a
+  testing
+* master
+```
+
+---
+
+## HEADを`testing`に変更する
+
+<br/>
+
+今いるのは`master`なので､`testing`に変更する必要がある
+
+```shell
+$ git checkout testing
+Switched to branch 'testing'
+```
+
+---
+
+<!-- note
+新しいブランチなのに､READMEがあることが分かります
+-->
+
+## ディレクトリ構成を確認する
+
+```shell
+$ ls -a
+.  ..  .git  README.md
+```
+
+README.mdがある
+
+---
+
+## 実は今､`master`と`testing`は同じCommitの名前を指している
+
+<br/>
+
+`git branch <新しいブランチ名>`というコマンドは､  
+現在のHEADが指すCommitで新しい名前のブランチを作成するコマンド
+
+---
+
+<!-- note
+まあよく考えたら､並行して作業するなら､まっさらな状態から始めるよりも､途中から始めたほうが良いですよね｡
+(もちろんまっさらな状態のブランチも作れます)
+-->
+
+<!-- classes: fullscreen -->
+
+<img src="https://github.com/anoriqq/anoriqq/blob/images/2020-02-21T21-44-33_octXz74gJ7SsN9JQEXsy1xQC.png?raw=true"/>
+
+---
+
+<!-- note
+並行して開発していると､こんな状況になります｡(次ページ)
+-->
+
+## あとはそれぞれのブランチで並行して作業すればOK
+
+---
+
+## 複数のブランチを1つにまとめたい
+
+---
+
+## 一方のブランチの変更を他方のブランチにまとめるコマンド
+
+```shell
+$ git merge <取り込みたいブランチ名>
+```
