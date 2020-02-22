@@ -1358,26 +1358,26 @@ Commit Bと全く同じIndexと比較する(Commit Bと比較していると言�
 ## 早速新しいブランチを作る
 
 ```shell
-# testingという名前の新しくブランチをつくるコマンド
-$ git bransh testing
+# featureという名前の新しくブランチをつくるコマンド
+$ git bransh feature
 
 # ブランチの一覧を表示するコマンド
 $ git branch -a
-  testing
+  feature
 * master
 ```
 
 ---
 
-## HEADを`testing`に変更する
+## HEADを`feature`に変更する
 
 <br/>
 
-今いるのは`master`なので､`testing`に変更する必要がある
+今いるのは`master`なので､`feature`に変更する必要がある
 
 ```shell
-$ git checkout testing
-Switched to branch 'testing'
+$ git checkout feature
+Switched to branch 'feature'
 ```
 
 ---
@@ -1397,7 +1397,7 @@ README.mdがある
 
 ---
 
-## 実は今､`master`と`testing`は同じCommitの名前を指している
+## 実は今､`master`と`feature`は同じCommitの名前を指している
 
 <br/>
 
