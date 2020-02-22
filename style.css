@@ -34,3 +34,20 @@ a {
 
 .title {
 }
+
+.video-background {
+  z-index: -99;
+}
+
+.ts-img {
+  color: white;
+}
+
+.lang img {
+  height: 100px;
+  max-width: 200px;
+}
+
+.lang a {
+  white-space: nowrap;
+}
