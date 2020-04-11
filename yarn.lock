@@ -4153,7 +4153,7 @@ function-bind@^1.1.1:
   resolved "https://registry.yarnpkg.com/function-bind/-/function-bind-1.1.1.tgz#a56899d3ea3c9bab874bb9773b7c5ede92f4895d"
   integrity sha512-yIovAzMX49sF8Yl58fSCWJ5svSLuaibPxXQJFLmBObTuCr0Mf1KiPopGM9NiFjiYBCbfaa2Fh6breQ6ANVTI0A==
 
-fusuma@^1.15.1:
+fusuma@1.15.1:
   version "1.15.1"
   resolved "https://registry.yarnpkg.com/fusuma/-/fusuma-1.15.1.tgz#557bcce5f1ee0bf1de1f35126a3e0f921a5b5bb3"
   integrity sha512-kzunMUn8Oi1yuaYLlKX4IW7D6xXGcaA39H2/Fp/Ym2TgcMhChfThUSnpjVCfWXq4twdx678SJTPADPJK50X3LQ==
