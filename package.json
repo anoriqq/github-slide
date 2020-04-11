@@ -5,6 +5,6 @@
   "author": "anoriqq <shota.yoshikawa@anoriqq.com>",
   "license": "MIT",
   "devDependencies": {
-    "fusuma": "1.15.1"
+    "fusuma": "1.16.0"
   }
 }
